@@ -1,5 +1,7 @@
 # Terraform Provider Slack Token
 
+[![registry.terraform.io](https://img.shields.io/badge/terraform-docs-success)](https://registry.terraform.io/providers/change-engine/slack-token/latest/docs)
+
 This provider simply rotates Slack refresh tokens (for use in other providers).
 
 ## Requirements

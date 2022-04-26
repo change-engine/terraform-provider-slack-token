@@ -2,7 +2,6 @@ package provider
 
 import (
 	"context"
-	"encoding/json"
 	"fmt"
 	"time"
 
@@ -106,17 +105,13 @@ func (r refreshResource) Update(ctx context.Context, req tfsdk.UpdateResourceReq
 	}
 
 	client := client.New()
-	resultBody, err := client.Request(ctx, "tooling.tokens.rotate?refresh_token="+state.RefreshToken.Value)
-	if err != nil {
-		resp.Diagnostics.AddError("Client Error", fmt.Sprintf("Unable to rotate token, got error: %s", err))
-		return
-	}
 	var resultJson refreshResponse
-	err = json.Unmarshal(resultBody, &resultJson)
+	err := client.Request(ctx, "tooling.tokens.rotate?refresh_token="+state.RefreshToken.Value, resultJson)
 	if err != nil {
 		resp.Diagnostics.AddError("Client Error", fmt.Sprintf("Unable to rotate token, got error: %s", err))
 		return
 	}
+
 	data.Token = types.String{Value: resultJson.Token}
 	data.Expires = types.Int64{Value: resultJson.Expires - 60*60*3}
 	data.RefreshToken = types.String{Value: resultJson.RefreshToken}
