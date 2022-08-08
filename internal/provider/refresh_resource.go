@@ -7,9 +7,9 @@ import (
 
 	"github.com/change-engine/terraform-provider-slack-token/client"
 	"github.com/hashicorp/terraform-plugin-framework/diag"
+	"github.com/hashicorp/terraform-plugin-framework/path"
 	"github.com/hashicorp/terraform-plugin-framework/tfsdk"
 	"github.com/hashicorp/terraform-plugin-framework/types"
-	"github.com/hashicorp/terraform-plugin-go/tftypes"
 )
 
 var _ tfsdk.ResourceType = refreshResourceType{}
@@ -125,7 +125,7 @@ func (r refreshResource) Delete(ctx context.Context, req tfsdk.DeleteResourceReq
 }
 
 func (r refreshResource) ImportState(ctx context.Context, req tfsdk.ImportResourceStateRequest, resp *tfsdk.ImportResourceStateResponse) {
-	tfsdk.ResourceImportStatePassthroughID(ctx, tftypes.NewAttributePath().WithAttributeName("refresh_token"), req, resp)
+	tfsdk.ResourceImportStatePassthroughID(ctx, path.Root("refresh_token"), req, resp)
 }
 
 type timeoutUnkownModifier struct{}
