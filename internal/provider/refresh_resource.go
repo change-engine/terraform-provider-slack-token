@@ -102,7 +102,7 @@ func (r refreshResource) Update(ctx context.Context, req resource.UpdateRequest,
 
 	client := client.New()
 	var resultJson refreshResponse
-	err := client.Request(ctx, "tooling.tokens.rotate?refresh_token="+state.RefreshToken.ValueString(), resultJson)
+	err := client.Request(ctx, "tooling.tokens.rotate?refresh_token="+state.RefreshToken.ValueString(), &resultJson)
 	if err != nil {
 		resp.Diagnostics.AddError("Client Error", fmt.Sprintf("Unable to rotate token, got error: %s", err))
 		return
