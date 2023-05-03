@@ -38,7 +38,7 @@ func (r *refreshResource) Schema(_ context.Context, _ resource.SchemaRequest, re
 				Optional:            true,
 				Computed:            true,
 				PlanModifiers: []planmodifier.Int64{
-					timeoutUnkownModifier{},
+					timeoutUnknownModifier{},
 				},
 			},
 			"token": schema.StringAttribute{
@@ -47,7 +47,7 @@ func (r *refreshResource) Schema(_ context.Context, _ resource.SchemaRequest, re
 				Computed:            true,
 				Sensitive:           true,
 				PlanModifiers: []planmodifier.String{
-					timeoutUnkownModifier{},
+					timeoutUnknownModifier{},
 				},
 			},
 			"refresh_token": schema.StringAttribute{
@@ -56,7 +56,7 @@ func (r *refreshResource) Schema(_ context.Context, _ resource.SchemaRequest, re
 				Computed:            true,
 				Sensitive:           true,
 				PlanModifiers: []planmodifier.String{
-					timeoutUnkownModifier{},
+					timeoutUnknownModifier{},
 				},
 			},
 		},
@@ -81,7 +81,7 @@ func (r refreshResource) Create(ctx context.Context, req resource.CreateRequest,
 }
 
 func (r refreshResource) Read(ctx context.Context, req resource.ReadRequest, resp *resource.ReadResponse) {
-	// Not posible
+	// Not possible
 }
 
 func (r refreshResource) Update(ctx context.Context, req resource.UpdateRequest, resp *resource.UpdateResponse) {
@@ -124,17 +124,17 @@ func (r *refreshResource) ImportState(ctx context.Context, req resource.ImportSt
 	resource.ImportStatePassthroughID(ctx, path.Root("refresh_token"), req, resp)
 }
 
-type timeoutUnkownModifier struct{}
+type timeoutUnknownModifier struct{}
 
-func (m timeoutUnkownModifier) Description(ctx context.Context) string {
+func (m timeoutUnknownModifier) Description(ctx context.Context) string {
 	return "Allow refresh before token expires."
 }
 
-func (m timeoutUnkownModifier) MarkdownDescription(ctx context.Context) string {
+func (m timeoutUnknownModifier) MarkdownDescription(ctx context.Context) string {
 	return "Allow refresh before token expires."
 }
 
-func (m timeoutUnkownModifier) PlanModifyInt64(ctx context.Context, req planmodifier.Int64Request, resp *planmodifier.Int64Response) {
+func (m timeoutUnknownModifier) PlanModifyInt64(ctx context.Context, req planmodifier.Int64Request, resp *planmodifier.Int64Response) {
 	var data refreshResourceData
 	diags := req.Plan.Get(ctx, &data)
 	resp.Diagnostics.Append(diags...)
@@ -143,7 +143,7 @@ func (m timeoutUnkownModifier) PlanModifyInt64(ctx context.Context, req planmodi
 	}
 }
 
-func (m timeoutUnkownModifier) PlanModifyString(ctx context.Context, req planmodifier.StringRequest, resp *planmodifier.StringResponse) {
+func (m timeoutUnknownModifier) PlanModifyString(ctx context.Context, req planmodifier.StringRequest, resp *planmodifier.StringResponse) {
 	var data refreshResourceData
 	diags := req.Plan.Get(ctx, &data)
 	resp.Diagnostics.Append(diags...)
