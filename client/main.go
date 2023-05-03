@@ -49,7 +49,7 @@ func (a *SlackApp) Request(ctx context.Context, method string, resultJson interf
 		return errors.New(errorJson.Error)
 	}
 	if resultJson != nil {
-		err = json.Unmarshal(resultBody, resultJson)
+		err = json.Unmarshal(resultBody, &resultJson)
 		if err != nil {
 			return err
 		}
