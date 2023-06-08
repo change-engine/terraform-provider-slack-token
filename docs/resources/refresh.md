@@ -29,5 +29,3 @@ resource "slack-token_refresh" "example" {
 - `expires` (Number) Next refresh time.
 - `refresh_token` (String, Sensitive) Current refresh token.
 - `token` (String, Sensitive) Current API token.
-
-
