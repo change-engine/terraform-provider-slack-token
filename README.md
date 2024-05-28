@@ -7,7 +7,7 @@ This provider simply rotates Slack refresh tokens (for use in other providers).
 ## Requirements
 
 - [Terraform](https://www.terraform.io/downloads.html) >= 1.0
-- [Go](https://golang.org/doc/install) >= 1.17
+- [Go](https://golang.org/doc/install) >= 1.21
 
 ## Building The Provider
 
